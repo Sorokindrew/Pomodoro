@@ -2,7 +2,8 @@
     padding: 15px 50px;
 }
 
-.button :hover {
+.button:hover {
     font-weight: 700;
     background-color: aqua;
+    cursor: pointer;
 }

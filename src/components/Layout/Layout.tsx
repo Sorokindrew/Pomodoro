@@ -1,9 +1,8 @@
 import React from 'react'
 import styles from './layout.module.css'
 import { Header } from '../Header/Header'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home } from '../Home/Home'
-import { Statistic } from '../Statistic/Statistic'
+import { BrowserRouter } from 'react-router-dom'
+import { Content } from '../Content/Content'
 
 
 export function Layout() {
@@ -11,10 +10,7 @@ export function Layout() {
         <BrowserRouter>
             <div className={styles.container}>
                 <Header />
-                <Routes>
-                    <Route index element={<Home />} />
-                    <Route path="statistic" element={<Statistic />} />
-                </Routes>
+                <Content />
             </div>
         </BrowserRouter>
     )
