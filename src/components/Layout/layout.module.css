@@ -1,4 +1,5 @@
-.header {
-    padding-top: 100px;
-    color: red;
+.container {
+    max-width: 1280px;
+    padding: 0 80px;
+    margin: 0 auto;
 }
