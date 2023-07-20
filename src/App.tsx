@@ -9,6 +9,7 @@ import { rootReducer } from './store/reducer';
 const store = createStore(rootReducer, composeWithDevTools())
 
 function App() {
+  
   return (
     <Provider store={store}>
       <div className="App">
