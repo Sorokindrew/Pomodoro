@@ -1,0 +1,98 @@
+.content__right {
+  position: relative;
+  width: 733px;
+  height: 507px;
+  padding-top: 125px;
+  background-color: #F4F4F4;
+  justify-self: flex-end;
+}
+
+.task_timer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 55px;
+  padding: 19px 40px;
+  background-color: #C4C4C4;
+}
+
+.task_timer p {
+  color: #FFFFFF;
+  font-size: 16px;
+}
+
+.task_name {
+  font-weight: 700;
+}
+
+.timer__time {
+  display: flex;
+  align-items: center;
+  font-size: 150px;
+  font-style: normal;
+  font-weight: 100;
+  padding-left: 178px;
+  margin-bottom: -10px;
+}
+
+.timer__time span {
+  margin-right: 25px;
+}
+
+.add_pomodoro {
+  border: none;
+  cursor: pointer;
+}
+
+.add_pomodoro svg circle{
+  fill: #C4C4C4;
+}
+
+.add_pomodoro svg:hover circle {
+  fill: #899441;
+}
+
+.task_descr {
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.task_descr span {
+  color: #999;
+}
+
+.button_block {
+  display: flex;
+  padding: 0 213px;
+  justify-content: space-between;
+
+}
+
+.add_button {
+  display: inline-flex;
+  height: 55px;
+  font-size: 16px;
+  color: #FFFFFF;
+  background-color: #A8B64F;
+  padding: 15px 50px;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.inactive_button {
+  font-size: 16px;
+  color: #C4C4C4;
+  background-color: #F4F4F4;
+  padding: 15px 50px;
+  border: 2px solid #C4C4C4;
+  cursor: pointer;
+}

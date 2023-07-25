@@ -1,3 +1,14 @@
+html {
+  box-sizing: border-box;
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 @font-face {
   font-family: 'SF UI Display';
   src: local('SF UI Display Regular'), local('SFUIDisplay-Regular'),
@@ -79,8 +90,42 @@
   font-style: normal;
 }
 
+a {
+  color: inherit;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+ul,
+p,
+figure {
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+ul,
+p,
+figure {
+  margin: 0;
+}
+
 body {
-  font-size: 100px;
-  font-family: 'SF UI Display';
+  margin: 0;
+  font-family: "SF UI Display";
+  color: #333333;
+}
+
+button {
+  margin: 0;
+  padding: 0;
 }
 

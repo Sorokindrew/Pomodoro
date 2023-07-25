@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './content.module.css'
 import { Route, Routes } from 'react-router-dom'
-import { Home } from '../Home/Home'
-import { Statistic } from '../Statistic/Statistic'
+import { Home } from '../Home'
+import { Statistic } from '../Statistic'
 
 
 export function Content() {

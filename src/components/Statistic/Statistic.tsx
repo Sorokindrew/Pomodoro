@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './statistic.module.css'
-import { Button } from '../Button/Button'
+import { Button } from '../UI/Button/Button'
 // import { useDispatch } from 'react-redux'
 import { Dropdown } from '../UI/Dropdown'
 
@@ -16,7 +16,7 @@ export function Statistic() {
     return (
         <div className={styles.statistic}>
             <p>Statistic screen</p>
-            <Button text={'Старт'} onClick={handleClick} />
+            <Button text={'Старт'} className={styles.add_button} onClick={handleClick} />
             <Dropdown
                 button={<button>Drop</button>}
                 onOpen={() => console.log('opened')}
