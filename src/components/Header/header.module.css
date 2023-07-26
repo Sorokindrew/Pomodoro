@@ -1,31 +1,31 @@
 .header {
     display: flex;
-    height: 100px;
-    align-items: center;
+    padding: 15px 0x;
+    height: 70px;
     justify-content: space-between;
-}
-
-.statistic {
+    align-items: center;
+    box-shadow: 0 40px 20px #f8f8f8 ;
+  }
+  
+  .statistic {
     display: flex;
     font-size: 16px;
     font-weight: 400;
     color: #DC3E22;
     align-items: center;
-    text-decoration: none;
-}
-
-.statistic img {
+  }
+  
+  .statistic img {
     margin-right: 9px;
-}
-
-.logo {
+  }
+  
+  .logo {
     display: flex;
     align-items: center;
     font-size: 24px;
     color: #DC3E22;
-    text-decoration: none;
-}
-
-.logo img {
+  }
+  
+  .logo img {
     margin-right: 12px;
-}
+  }

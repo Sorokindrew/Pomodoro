@@ -1,0 +1,19 @@
+.title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+.list {
+    padding-left: 23px;
+    margin-bottom: 25px;
+    line-height: 33px;
+  }
+  
+  .list_item {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+  }

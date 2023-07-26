@@ -1,0 +1,89 @@
+.task {
+    position: relative;
+    display: flex;
+    padding: 19px 0;
+    align-items: center;
+}
+
+.task_desc {
+    position: relative;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    flex-basis: 309px;
+}
+
+.task_desc::before {
+    position: absolute;
+    content: '';
+    width: calc(100% + 61px);
+    height: 1px;
+    top: calc(-19px + (-1px / 2));
+    left: -35px;
+    background-color: #e4e4e4;
+}
+
+.task_desc::after {
+    position: absolute;
+    content: '';
+    width: calc(100% + 61px);
+    height: 1px;
+    bottom: calc(-19px + (-1px / 2));
+    left: -35px;
+    background-color: #e4e4e4;
+}
+
+
+.dropdownList {
+    position: relative;
+    flex: 1 1 0;
+    list-style: none;
+    width: 165px;
+    height: 153px;
+    border: 1px solid #c4c4c4;
+    padding: 10px 1px 6px;
+    margin: 0;
+    background-color: #fff;
+}
+
+.dropdownList::before {
+    position: absolute;
+    content: '';
+    top: -8.2px;
+    left: calc(50% - 8px);
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid #c4c4c4;
+    border-right: 1px solid #c4c4c4;
+    background-color: #fff;
+    transform: rotate(-45deg);
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+    color: #999;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+
+.dropdownItem:hover {
+    background-color: #f4f4f4;
+}
+
+.itemText {
+    padding-left: 8px;
+}
+
+.button {
+    width: 26px;
+    height: 16px;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+}

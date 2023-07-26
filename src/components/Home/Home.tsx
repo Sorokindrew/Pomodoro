@@ -1,48 +1,26 @@
-import React, { ChangeEvent, FormEvent, useEffect } from 'react'
-import styles from './home.module.css'
-import { useSelector, useStore } from 'react-redux'
-import { RootState } from '../../store/reducer'
-import { Button } from '../Button/Button'
-import { useDispatch } from 'react-redux'
-import { addTask, updateInputText } from '../../store/actions'
+import React from 'react';
+import styles from './home.module.css';
+import { HomeLeft } from './HomeLeft';
+import { HomeRight } from './HomeRight';
+import { useSelector } from 'react-redux';
+import { RootState, Task } from '../../store/reducer';
 
 
 
 export function Home() {
-    const store = useStore()
+    const task = useSelector<RootState, Task[]>(state => state.taskList)
+    let taskName = '';
+    let pomodoros = 0;
 
-    useEffect(() => {
-        localStorage.setItem('store', JSON.stringify(store.getState()));
-        console.log('changed');
-    },[])
-    const inputText = useSelector<RootState, string>(state => state.inputText)
-    const dispatch = useDispatch()
-    const tasks = useSelector<RootState, string[]>(state => state.taskList)
-
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        dispatch(updateInputText(e.target.value))
-    }
-
-    const handleSubmit = (e: FormEvent) => {
-        e.preventDefault()
-        dispatch(addTask(inputText))
-        dispatch(updateInputText(''))
+    if (task[0] !== undefined) {
+        taskName = task[0].taskName
+        pomodoros = task[0].taskDuration
     }
 
     return (
-        <div className={styles.home}>
-            Home screen
-            <form>
-                <input type="text" onChange={handleChange} value={inputText} />
-                <Button text={'Добавить задачу'} onClick={handleSubmit} />
-            </form>
-            <ul style={{ fontSize: 20 }}>
-                {tasks.map(el => {
-                    return (
-                        <li key={tasks.indexOf(el)}>{el}</li>
-                    )
-                })}
-            </ul>
+        <div className={styles.container}>
+            <HomeLeft />
+            <HomeRight taskName={taskName} pomodoros={pomodoros} />
         </div>
     )
 }
