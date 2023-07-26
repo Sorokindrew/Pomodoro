@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { DropdownIcon, IncreaseIcon, DecreaseIcon, EditIcon, DeleteIcon } from '../../Icons'
 import { Dropdown } from '../../UI/Dropdown';
 import styles from './taskItem.module.css';
 import { PomodoroQuantity } from './PomodoroQuantity';
 import { useDispatch } from 'react-redux';
 import { decrease_pomodoro, deleteTask, increase_pomodoro } from '../../../store/actions';
+import { Modal } from '../../UI/Modal';
+import { DeleteConfirmation } from '../../DeleteConfirmation';
 
 interface ITaskItemProps {
     id: number
@@ -15,6 +17,8 @@ interface ITaskItemProps {
 
 
 export function TaskItem({ text, pomodoro, id }: ITaskItemProps) {
+
+    const [isModalOpened, setIsModalOpened] = useState(false);
     const dispatch = useDispatch()
 
     const handleIncrease = () => {
@@ -29,34 +33,42 @@ export function TaskItem({ text, pomodoro, id }: ITaskItemProps) {
         dispatch(deleteTask(id))
     }
 
+    const handleCancel = () => {
+        setIsModalOpened(false);
+    }
+
     return (
-        <div className={styles.task}>
-            <PomodoroQuantity quantity={pomodoro} />
-            <div className={styles.task_desc}>
-                <span> {text} </span>
+        <>
+            <div className={styles.task}>
+                <PomodoroQuantity quantity={pomodoro} />
+                <div className={styles.task_desc}>
+                    <span> {text} </span>
+                </div>
+                <Dropdown
+                    button={<button className={styles.button}><DropdownIcon /></button>} >
+                    <ul className={styles.dropdownList}>
+                        <li className={styles.dropdownItem} onClick={handleIncrease}>
+                            <IncreaseIcon />
+                            <span className={styles.itemText}>Увеличить</span>
+                        </li>
+                        <li className={styles.dropdownItem} onClick={handleDecrease}>
+                            <DecreaseIcon />
+                            <span className={styles.itemText}>Уменьшить</span>
+                        </li>
+                        <li className={styles.dropdownItem}>
+                            <EditIcon />
+                            <span className={styles.itemText}>Редактировать</span>
+                        </li>
+                        <li className={styles.dropdownItem} onClick={()=>setIsModalOpened(true)}>
+                            <DeleteIcon />
+                            <span className={styles.itemText}>Удалить</span>
+                        </li>
+                    </ul>
+                </Dropdown>
             </div>
-            <Dropdown
-                style = {{top: 15, left:-69.5}}
-                button={<button className={styles.button}><DropdownIcon /></button> } >
-                <ul className={styles.dropdownList}>
-                    <li className={styles.dropdownItem} onClick={handleIncrease}>
-                        <IncreaseIcon />
-                        <span className={styles.itemText}>Увеличить</span>
-                    </li>
-                    <li className={styles.dropdownItem} onClick={handleDecrease}>
-                        <DecreaseIcon />
-                        <span className={styles.itemText}>Уменьшить</span>
-                    </li>
-                    <li className={styles.dropdownItem}>
-                        <EditIcon />
-                        <span className={styles.itemText}>Редактировать</span>
-                    </li>
-                    <li className={styles.dropdownItem} onClick={handleDelete}>
-                        <DeleteIcon />
-                        <span className={styles.itemText}>Удалить</span>
-                    </li>
-                </ul>
-            </Dropdown>
-        </div>
+            {isModalOpened && <Modal>
+                <DeleteConfirmation handleDelete={handleDelete} handleCancel={handleCancel} />
+            </Modal>}
+        </>
     )
 }

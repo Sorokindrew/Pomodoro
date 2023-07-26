@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Content } from '../Content/Content';
 import { init_app } from '../../store/actions';
 import { useDispatch } from 'react-redux';
+import { Modal } from '../UI/Modal';
 
 
 

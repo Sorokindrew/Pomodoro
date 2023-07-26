@@ -1,9 +1,9 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent } from 'react';
 
 interface IButtonProps {
-    text: string
-    className: string
-    onClick?: (e: FormEvent) => void
+    text: string;
+    className: string;
+    onClick?: (e: FormEvent) => void;
 }
 
 
