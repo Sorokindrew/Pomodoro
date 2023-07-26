@@ -4,3 +4,4 @@ export * from './EditIcon';
 export * from './DeleteIcon';
 export * from './DropdownIcon';
 export * from './PlusButtonIcon';
+export * from './CloseModal';
