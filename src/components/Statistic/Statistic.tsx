@@ -1,32 +1,47 @@
-import React from 'react'
-import styles from './statistic.module.css'
-import { Button } from '../UI/Button/Button'
+import React from 'react';
+import styles from './statistic.module.css';
 // import { useDispatch } from 'react-redux'
-import { Dropdown } from '../UI/Dropdown'
+import { InfoBlock } from '../InfoBlock';
+import { Diagram } from '../Diagram';
+import { Dropdown } from '../UI/Dropdown';
+import { BigPomodoro, DropArrow } from '../Icons';
+import { WeekDrop } from '../WeekDrop/WeekDrop';
 
 
 
 export function Statistic() {
-    // const dispatch = useDispatch()
-
-    const handleClick = () => {
-        console.log('click');
-    }
 
     return (
         <div className={styles.statistic}>
-            <p>Statistic screen</p>
-            <Button text={'Старт'} className={styles.add_button} onClick={handleClick} />
-            <Dropdown
-                button={<button>Drop</button>}
-                onOpen={() => console.log('opened')}
-                onClose={() => console.log('closed')}>
-                <ul>
-                    <li>
-                        1
-                    </li>
-                </ul>
-            </Dropdown>
+            <div className={styles.upper}>
+                <div className={styles.upper_wrapper}>
+                    <h2 className={styles.title}>Ваша активность</h2>
+                    <WeekDrop />
+                </div>
+            </div>
+            <div className={styles.aside}>
+                <div className={styles.descr}>
+                    <div className={styles.day_descr}>Понедельник</div>
+                    <div className={styles.descr_text}>
+                        Вы работали над задачами в течение
+                        <span className={styles.descr_time}> 51 минуты</span>
+                    </div>
+                </div>
+                <div className={styles.pomo}>
+                    <div className={styles.pomo_number}>
+                        <BigPomodoro />
+                    </div>
+                    <div className={styles.pomo_descr}>
+                        2 помидора
+                    </div>
+                </div>
+            </div>
+            <Diagram report={[182, 168, 285, 375, 120, 5, 5]} />
+            <div className={styles.info}>
+                <InfoBlock className='focus' value={35} />
+                <InfoBlock className='pause' value={9} />
+                <InfoBlock className='stop' value={3} />
+            </div>
         </div>
     )
 }

@@ -1,0 +1,101 @@
+.statistic {
+    display: grid;
+    grid-template-columns: 296px 1fr;
+    grid-template-rows: 140px 471px 176px;
+    grid-template-areas:
+        "upper upper"
+        "aside diagram"
+        "info info";
+    gap: 32px;
+}
+
+.upper {
+    grid-area: upper;
+}
+
+.upper_wrapper {
+    display: flex;
+    padding-top: 84px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.descr {
+    padding: 25px;
+    width: 100%;
+    height: 260px;
+    background-color: #f4f4f4;
+}
+
+.day_descr {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+.desct_text {
+    font-size: 16px;
+    font-style: normal;
+    line-height: 28px;
+}
+
+.descr_time {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    color: #DC3E22;
+}
+
+.pomo {
+    width: 100%;
+    height: 179px;
+    background-color: #f4f4f4;
+    position: relative;
+}
+
+.pomo_number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+}
+
+.pomo_descr {
+    width: 100%;
+    height: 51px;
+    padding-top: 9px;
+    position: absolute;
+    background-color: #DC3E22;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+
+}
+
+.diagram {
+    grid-area: diagram;
+    border: 1px solid red;
+    border-color: green;
+}
+
+.info {
+    grid-area: info;
+    display: flex;
+    justify-content: space-between;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}

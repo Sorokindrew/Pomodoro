@@ -1,5 +1,6 @@
 import { Reducer } from "redux";
-import { ADD_TASK, AddTaskAction, DECREASE_POMODORO, DELETE_TASK, DecreasePomodoroAction, DeleteTaskAction, INCREASE_POMODORO, INIT_APP, IncreasePomodoroAction, InitAppAction, UPDATE_INPUT_TEXT, UpdateInputTextAction } from "./actions";
+import { ADD_TASK, AddTaskAction, DECREASE_POMODORO, DELETE_TASK, DecreasePomodoroAction, DeleteTaskAction, INCREASE_POMODORO, INIT_APP, IncreasePomodoroAction, InitAppAction, SELECT_WEEK, SelectWeekAction, UPDATE_INPUT_TEXT, UpdateInputTextAction } from "./actions";
+import { Statistic } from "../components/Statistic";
 
 export type Task = {
     id: number
@@ -7,17 +8,37 @@ export type Task = {
     taskDuration: number
 }
 
+export type WeekStatistic = {
+    days: number[]
+}
+
+export type StatisticState = {
+    activeWeek: string
+    weeksStatistic: WeekStatistic[]
+}
+
 export type RootState = {
     inputText: string
     taskList: Task[]
+    statisticState: StatisticState
 }
 
 const initialState: RootState = {
     inputText: '',
-    taskList: []
+    taskList: [],
+    statisticState: {
+        activeWeek: 'Эта неделя',
+        weeksStatistic: [{ days: [1, 1, 1, 1, 1, 1, 1] }, { days: [1, 1, 1, 1, 1, 1, 1] }, { days: [1, 1, 1, 1, 1, 1, 1] }]
+    }
 }
 
-type Action = UpdateInputTextAction | AddTaskAction | InitAppAction | IncreasePomodoroAction | DecreasePomodoroAction | DeleteTaskAction
+type Action = UpdateInputTextAction
+    | AddTaskAction
+    | InitAppAction
+    | IncreasePomodoroAction
+    | DecreasePomodoroAction
+    | DeleteTaskAction
+    | SelectWeekAction
 
 export const rootReducer: Reducer<RootState, Action> = (state = initialState, action) => {
     switch (action.type) {
@@ -73,9 +94,15 @@ export const rootReducer: Reducer<RootState, Action> = (state = initialState, ac
         case DELETE_TASK:
             let taskListWithoutDeleted = [...state.taskList]
             taskListWithoutDeleted = taskListWithoutDeleted.filter(task => task.id !== action.id);
-            const newStateWithoutDeleted = { ...state, taskList: taskListWithoutDeleted};
+            const newStateWithoutDeleted = { ...state, taskList: taskListWithoutDeleted };
             localStorage.setItem('store', JSON.stringify(newStateWithoutDeleted));
             return newStateWithoutDeleted;
+
+        case SELECT_WEEK:
+            let stat = action.week
+            const newStatisticState = {...state.statisticState, activeWeek: stat}
+            const stateChangeStatisticWeek = { ...state, statisticState: newStatisticState }
+            return stateChangeStatisticWeek
         default:
             return state;
     }
