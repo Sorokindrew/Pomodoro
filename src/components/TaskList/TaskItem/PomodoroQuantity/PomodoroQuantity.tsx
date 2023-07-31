@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './pmodoroQuantity.module.css';
+import styles from './pomodoroQuantity.module.css';
 
 interface IPomodoroQuantityProps {
     quantity: number

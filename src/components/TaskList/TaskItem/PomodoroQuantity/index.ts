@@ -1,1 +1,1 @@
-export * from './PomodoroQuantity'
+export * from './PomodoroQuantity';

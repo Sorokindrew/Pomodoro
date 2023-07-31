@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { DropdownIcon, IncreaseIcon, DecreaseIcon, EditIcon, DeleteIcon } from '../../Icons'
 import { Dropdown } from '../../UI/Dropdown';
 import styles from './taskItem.module.css';
-import { PomodoroQuantity } from './PomodoroQuantity';
 import { useDispatch } from 'react-redux';
 import { decrease_pomodoro, deleteTask, increase_pomodoro } from '../../../store/actions';
 import { Modal } from '../../UI/Modal';
 import { DeleteConfirmation } from '../../DeleteConfirmation';
+import { PomodoroQuantity } from './PomodoroQuantity';
 
 interface ITaskItemProps {
     id: number

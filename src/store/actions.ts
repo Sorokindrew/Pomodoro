@@ -6,6 +6,7 @@ export const INIT_APP = 'INIT_APP';
 export const INCREASE_POMODORO = 'INCREASE_POMODORO';
 export const DECREASE_POMODORO = 'DECREASE_POMODORO';
 export const DELETE_TASK = 'DELETE_TASK';
+export const SELECT_WEEK = 'SELECT_WEEK';
 
 export type InitAppAction = {
     type: typeof INIT_APP
@@ -36,6 +37,11 @@ export type DeleteTaskAction = {
     id: number
 };
 
+export type SelectWeekAction = {
+    type: typeof SELECT_WEEK
+    week: string
+};
+
 export const init_app: ActionCreator<InitAppAction> = () => ({
     type: INIT_APP
 });
@@ -63,5 +69,10 @@ export const addTask: ActionCreator<AddTaskAction> = (task)=> ({
 export const deleteTask: ActionCreator<DeleteTaskAction> = (id) => ({
     type: DELETE_TASK,
     id
+});
+
+export const selectWeek: ActionCreator<SelectWeekAction> = (week) => ({
+    type: SELECT_WEEK,
+    week
 });
 

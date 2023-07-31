@@ -1,0 +1,54 @@
+.week {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 370px;
+    height: 55px;
+    background-color: #f4f4f4;
+}
+
+.selected {
+    font-size: 16px;
+    padding: 19px 15px;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+    right: 22px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    z-index: 20;
+}
+
+.button svg {
+    transform: rotate(180deg);
+}
+
+button.active svg {
+    transform: none;
+}
+
+.list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.list_item {
+    width: 100%;
+    padding: 19px 15px;
+    background-color: #f8f8f8;
+}
+
+
+.list_item:not(:first-child) {
+    border-top: 1px solid #dedede;
+}

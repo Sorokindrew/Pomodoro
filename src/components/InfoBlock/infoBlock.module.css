@@ -1,0 +1,38 @@
+.container {
+    width: 405px;
+    height: 179px;
+    padding: 25px;
+}
+
+.focus {
+    background-color: #FFDDA9;
+    background-image: url("/public/focus.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px);
+}
+
+.pause {
+    background-color: #DFDCFE;
+    background-image: url("/public/paused.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px);
+}
+
+.stop {
+    background-color: #C5F1FF;
+    background-image: url("/public/stoppages.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 25px);
+}
+
+.title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.figures {
+    margin: 0;
+    font-size: 64px;
+}
