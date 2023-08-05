@@ -7,9 +7,11 @@ import { Statistic } from '../Statistic'
 
 export function Content() {
     return (
-        <Routes>
-            <Route index element={<Home />} />
-            <Route path="statistic" element={<Statistic />} />
-        </Routes>
+        <div className={styles.container}>
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="statistic" element={<Statistic />} />
+            </Routes>
+        </div>
     )
 }

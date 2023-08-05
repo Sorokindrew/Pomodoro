@@ -1,0 +1,28 @@
+.timelines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 875px;
+}
+
+.time_line {
+    position: relative;
+    
+    font-size: 12px;
+}
+
+.time_line::before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: calc(100% + 32px);
+    width: 843px;
+    height: 1px;
+    background-color: #333333;
+    opacity: 0.2;
+}

@@ -1,16 +1,14 @@
 import React from 'react';
 import styles from './statistic.module.css';
-// import { useDispatch } from 'react-redux'
 import { InfoBlock } from '../InfoBlock';
 import { Diagram } from '../Diagram';
-import { Dropdown } from '../UI/Dropdown';
-import { BigPomodoro, DropArrow } from '../Icons';
+import { BigPomodoro } from '../Icons';
 import { WeekDrop } from '../WeekDrop/WeekDrop';
 
 
 
 export function Statistic() {
-
+    
     return (
         <div className={styles.statistic}>
             <div className={styles.upper}>
@@ -36,7 +34,15 @@ export function Statistic() {
                     </div>
                 </div>
             </div>
-            <Diagram report={[182, 168, 285, 375, 120, 5, 5]} />
+            <Diagram report={[
+                { 'Пн': 50 },
+                { 'Вт': 25 },
+                { 'Ср': 100 },
+                { 'Чт': 80 },
+                { 'Пт': 50 },
+                { 'Сб': 10 },
+                { 'Вс': 5 }
+            ]} />
             <div className={styles.info}>
                 <InfoBlock className='focus' value={35} />
                 <InfoBlock className='pause' value={9} />
