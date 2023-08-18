@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { increase_pomodoro } from '../../../store/actions';
 import { useSelector } from 'react-redux';
 import { RootState, Task } from '../../../store/reducer';
+import { timeToTimer } from '../../../utils/timeSplit';
 
 interface IHomeRightProps {
     taskName: string
@@ -22,7 +23,17 @@ export function HomeRight({ taskName, pomodoros }: IHomeRightProps) {
         dispatch(increase_pomodoro(tasks[0].id))
     }
 
-    const time = 25 * pomodor
+    const [time, setTime] = useState(25 * 60)
+    const [runnedInterval, setRunnedInterval] = useState(setInterval(() => { }, 1000))
+    const runTimer = () => setTime((prev) => prev - 1)
+    const handleStartPause = () => {
+        const interval = setInterval(runTimer, 1000);
+        setRunnedInterval(interval);
+    }
+    const handleStop = () => {
+        const interval = runnedInterval;
+        clearInterval(interval);
+    }
     return (
         <div className={styles.content__right}>
             <div className={styles.task_timer}>
@@ -30,7 +41,7 @@ export function HomeRight({ taskName, pomodoros }: IHomeRightProps) {
                 <p className={styles.task_duration}>Помидор <span>{pomodor}</span></p>
             </div>
             <p className={styles.timer__time}>
-                <span>{time}:00</span>
+                <span>{timeToTimer(time)}</span>
                 <button className={styles.add_pomodoro} type="button" onClick={handleClick}><PlusButtonIcon /></button>
             </p>
 
@@ -39,8 +50,8 @@ export function HomeRight({ taskName, pomodoros }: IHomeRightProps) {
                 {taskName}
             </p>
             <div className={styles.button_block}>
-                <Button className={styles.add_button} text='Старт' />
-                <Button className={styles.inactive_button} text='Стоп' />
+                <Button className={styles.add_button} text='Старт' onClick={handleStartPause} />
+                <Button className={styles.inactive_button} text='Стоп' onClick={handleStop} />
             </div>
         </div>
     )

@@ -1,6 +1,5 @@
 import { Reducer } from "redux";
-import { ADD_TASK, AddTaskAction, DECREASE_POMODORO, DELETE_TASK, DecreasePomodoroAction, DeleteTaskAction, INCREASE_POMODORO, INIT_APP, IncreasePomodoroAction, InitAppAction, SELECT_WEEK, SelectWeekAction, UPDATE_INPUT_TEXT, UpdateInputTextAction } from "./actions";
-import { Statistic } from "../components/Statistic";
+import { ADD_TASK, AddTaskAction, DECREASE_POMODORO, DELETE_TASK, DecreasePomodoroAction, DeleteTaskAction, INCREASE_POMODORO, INIT_APP, IncreasePomodoroAction, InitAppAction, SELECT_DAY, SELECT_WEEK, SelectDayAction, SelectWeekAction, UPDATE_INPUT_TEXT, UpdateInputTextAction } from "./actions";
 
 export type Task = {
     id: number
@@ -8,19 +7,21 @@ export type Task = {
     taskDuration: number
 }
 
-export type WeekStatistic = {
-    days: number[]
-}
-
 export type StatisticState = {
-    activeWeek: string
-    weeksStatistic: WeekStatistic[]
+    activeWeek: string;
+    activeDay: string;
+    weeksStatistic: {
+        thisWeek: number[];
+        prevWeek: number[];
+        twoWeeksAgo: number[];
+    };
 }
 
 export type RootState = {
     inputText: string
     taskList: Task[]
     statisticState: StatisticState
+    timer: number
 }
 
 const initialState: RootState = {
@@ -28,8 +29,14 @@ const initialState: RootState = {
     taskList: [],
     statisticState: {
         activeWeek: 'Эта неделя',
-        weeksStatistic: [{ days: [1, 1, 1, 1, 1, 1, 1] }, { days: [1, 1, 1, 1, 1, 1, 1] }, { days: [1, 1, 1, 1, 1, 1, 1] }]
-    }
+        activeDay: 'Среда',
+        weeksStatistic: {
+            thisWeek: [1, 2,3, 4, 5, 6, 7],
+            prevWeek: [8, 9, 10, 11, 12, 13, 14],
+            twoWeeksAgo: [15, 16, 17, 18, 19, 20, 21]
+        }
+    },
+    timer: 25*60
 }
 
 type Action = UpdateInputTextAction
@@ -39,6 +46,7 @@ type Action = UpdateInputTextAction
     | DecreasePomodoroAction
     | DeleteTaskAction
     | SelectWeekAction
+    | SelectDayAction
 
 export const rootReducer: Reducer<RootState, Action> = (state = initialState, action) => {
     switch (action.type) {
@@ -99,10 +107,15 @@ export const rootReducer: Reducer<RootState, Action> = (state = initialState, ac
             return newStateWithoutDeleted;
 
         case SELECT_WEEK:
-            let stat = action.week
-            const newStatisticState = {...state.statisticState, activeWeek: stat}
-            const stateChangeStatisticWeek = { ...state, statisticState: newStatisticState }
-            return stateChangeStatisticWeek
+            const stat = action.week;
+            const newStatisticWeek = { ...state.statisticState, activeWeek: stat };
+            const stateChangeStatisticWeek = { ...state, statisticState: newStatisticWeek };
+            return stateChangeStatisticWeek;
+        case SELECT_DAY:
+            const day = action.day;
+            const newStatisticDay = { ...state.statisticState, activeDay: day };
+            const stateChangeStatisticDay = { ...state, statisticState: newStatisticDay };
+            return stateChangeStatisticDay;
         default:
             return state;
     }

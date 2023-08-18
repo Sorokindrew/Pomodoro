@@ -3,6 +3,8 @@ import styles from './diagram.module.css';
 import { TimeLine } from "./TimeLine";
 import { WeekDiagram } from "./WeekDiagram";
 import classNames from "classnames";
+import { useDispatch } from "react-redux";
+import { selectDay } from "../../store/actions";
 
 export type DailyReport = {
     [key: string]: number
@@ -12,10 +14,12 @@ interface IDiagramProps {
     report: DailyReport[]
 }
 
-const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+export const days = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
 
 export function Diagram({ report }: IDiagramProps) {
     const [isActive, setIsActive] = useState([false, false, false, false, false, false, false]);
+    const dispatch = useDispatch();
 
     let max = 0;
     report.forEach(el => {
@@ -32,6 +36,7 @@ export function Diagram({ report }: IDiagramProps) {
             else barState[i] = false
         }
         setIsActive(barState);
+        dispatch(selectDay(days[index]));
     }
 
     return (
@@ -44,7 +49,7 @@ export function Diagram({ report }: IDiagramProps) {
                 {weekDays.map(el => {
                     if (weekDays.indexOf(el) === isActive.indexOf(true)){
                         return (
-                            <p className={classNames(styles.day_name, styles.active_day)}>{el}</p>
+                            <p className={classNames(styles.day_name, styles.active_day)} key={el}>{el}</p>
                         )
                     }
                     return (

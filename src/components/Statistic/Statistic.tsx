@@ -2,13 +2,13 @@ import React from 'react';
 import styles from './statistic.module.css';
 import { InfoBlock } from '../InfoBlock';
 import { Diagram } from '../Diagram';
-import { BigPomodoro } from '../Icons';
 import { WeekDrop } from '../WeekDrop/WeekDrop';
+import { Aside } from '../Aside';
 
 
 
 export function Statistic() {
-    
+
     return (
         <div className={styles.statistic}>
             <div className={styles.upper}>
@@ -17,23 +17,7 @@ export function Statistic() {
                     <WeekDrop />
                 </div>
             </div>
-            <div className={styles.aside}>
-                <div className={styles.descr}>
-                    <div className={styles.day_descr}>Понедельник</div>
-                    <div className={styles.descr_text}>
-                        Вы работали над задачами в течение
-                        <span className={styles.descr_time}> 51 минуты</span>
-                    </div>
-                </div>
-                <div className={styles.pomo}>
-                    <div className={styles.pomo_number}>
-                        <BigPomodoro />
-                    </div>
-                    <div className={styles.pomo_descr}>
-                        2 помидора
-                    </div>
-                </div>
-            </div>
+            <Aside />
             <Diagram report={[
                 { 'Пн': 50 },
                 { 'Вт': 25 },
