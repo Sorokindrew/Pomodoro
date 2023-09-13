@@ -4,7 +4,7 @@ import { TimeLine } from "./TimeLine";
 import { WeekDiagram } from "./WeekDiagram";
 import classNames from "classnames";
 import { useDispatch } from "react-redux";
-import { selectDay } from "../../store/actions";
+import { selectDay } from "../../store/statistic/action";
 
 export type DailyReport = {
     [key: string]: number

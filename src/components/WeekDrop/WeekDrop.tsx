@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styles from './weekDrop.module.css';
 import { DropArrow } from "../Icons";
-import { selectWeek } from "../../store/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/reducer";
 import classNames from "classnames";
+import { RootState } from "../../store/store";
+import { selectWeek } from "../../store/statistic/action";
 
 
 export function WeekDrop() {
-    const activeWeek = useSelector<RootState, string>(state => state.statisticState.activeWeek);
+    const activeWeek = useSelector<RootState, string>(state => state.statistic.activeWeek);
     const dispatch = useDispatch();
     const [isDropdownOpened, setIsDropdownOpened] = useState(false);
     const [buttonClasses, setButtonClasses] = useState(classNames(styles.button));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { TaskItem } from './TaskItem';
 import styles from './taskList.module.css';
-import { Task } from '../../store/reducer';
+import { Task } from '../../store/store';
 
 interface ITaskListProps {
     list: Task[]
