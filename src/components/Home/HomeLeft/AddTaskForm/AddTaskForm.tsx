@@ -1,14 +1,14 @@
 import React, { ChangeEvent, FormEvent } from 'react'
 import styles from './addTaskForm.module.css'
-import { addTask, updateInputText } from '../../../../store/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState } from '../../../../store/reducer'
 import { Button } from '../../../UI/Button'
+import { RootState } from '../../../../store/store'
+import { updateInputText, addTask } from '../../../../store/task/actions'
 
 
 export function AddTaskForm() {
 
-    const inputText = useSelector<RootState, string>(state => state.inputText)
+    const inputText = useSelector<RootState, string>(state => state.task.inputText)
     const dispatch = useDispatch()
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

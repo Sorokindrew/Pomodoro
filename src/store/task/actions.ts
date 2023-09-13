@@ -1,13 +1,13 @@
 import { ActionCreator } from "redux";
 
+export const INIT_APP = 'INIT_APP';
 export const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT';
 export const ADD_TASK = 'ADD_TASK';
-export const INIT_APP = 'INIT_APP';
 export const INCREASE_POMODORO = 'INCREASE_POMODORO';
 export const DECREASE_POMODORO = 'DECREASE_POMODORO';
 export const DELETE_TASK = 'DELETE_TASK';
-export const SELECT_WEEK = 'SELECT_WEEK';
-export const SELECT_DAY = 'SELECT_DAY';
+export const COMPLETE_POMODORO = 'COMPLETE_POMODORO';
+
 
 export type InitAppAction = {
     type: typeof INIT_APP
@@ -21,7 +21,7 @@ export type IncreasePomodoroAction = {
 export type DecreasePomodoroAction = {
     type: typeof DECREASE_POMODORO,
     id: number
-}; 
+};
 
 export type UpdateInputTextAction = {
     type: typeof UPDATE_INPUT_TEXT
@@ -38,16 +38,9 @@ export type DeleteTaskAction = {
     id: number
 };
 
-export type SelectWeekAction = {
-    type: typeof SELECT_WEEK
-    week: string
+export type CompletePomodoroAction = {
+    type: typeof COMPLETE_POMODORO
 };
-
-export type SelectDayAction = {
-    type: typeof SELECT_DAY
-    day: string
-};
-
 
 export const init_app: ActionCreator<InitAppAction> = () => ({
     type: INIT_APP
@@ -68,7 +61,7 @@ export const updateInputText: ActionCreator<UpdateInputTextAction> = (text) => (
     text
 });
 
-export const addTask: ActionCreator<AddTaskAction> = (task)=> ({
+export const addTask: ActionCreator<AddTaskAction> = (task) => ({
     type: ADD_TASK,
     task
 });
@@ -78,13 +71,6 @@ export const deleteTask: ActionCreator<DeleteTaskAction> = (id) => ({
     id
 });
 
-export const selectWeek: ActionCreator<SelectWeekAction> = (week) => ({
-    type: SELECT_WEEK,
-    week
+export const complete_pomodoro: ActionCreator<CompletePomodoroAction> = () => ({
+    type: COMPLETE_POMODORO
 });
-
-export const selectDay: ActionCreator<SelectDayAction> = (day) => ({
-    type: SELECT_DAY,
-    day
-});
-

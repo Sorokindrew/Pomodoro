@@ -2,13 +2,13 @@ import React from "react";
 import styles from './aside.module.css';
 import { BigPomodoro } from "../Icons";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/reducer";
 import { days } from "../Diagram";
+import { RootState } from "../../store/store";
 
 export function Aside() {
-    const activeDay = useSelector<RootState, string>(state=> state.statisticState.activeDay);
-    const activeWeek = useSelector<RootState, string>(state=> state.statisticState.activeWeek);
-    const statistic = useSelector<RootState, {thisWeek: number[], prevWeek: number[], twoWeeksAgo: number[]}>(state => state.statisticState.weeksStatistic);
+    const activeDay = useSelector<RootState, string>(state=> state.statistic.activeDay);
+    const activeWeek = useSelector<RootState, string>(state=> state.statistic.activeWeek);
+    const statistic = useSelector<RootState, {thisWeek: number[], prevWeek: number[], twoWeeksAgo: number[]}>(state => state.statistic.weeksStatistic);
     let selectedWeekStatistic: number[] = [];
     switch (activeWeek) {
         case 'Эта неделя':

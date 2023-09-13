@@ -3,8 +3,8 @@ import styles from './layout.module.css';
 import { Header } from '../Header/Header';
 import { BrowserRouter } from 'react-router-dom';
 import { Content } from '../Content/Content';
-import { init_app } from '../../store/actions';
 import { useDispatch } from 'react-redux';
+import { init_app } from '../../store/task/actions';
 
 
 
